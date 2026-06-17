@@ -41,7 +41,7 @@ export default function CarSelection({ onSelectCar }) {
     <div className="relative w-full h-full bg-black text-white font-mono overflow-hidden">
       {/* Background Image Layer (Active Car) */}
       <div
-        className="absolute inset-0 bg-cover bg-center opacity-30 transition-all duration-700"
+        className="absolute inset-0 bg-cover bg-center opacity-50 transition-all duration-700"
         style={{
           backgroundImage: `url(${activeCar.bgImg})`,
           backgroundColor: "#111",
