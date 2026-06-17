@@ -17,6 +17,7 @@ import CarModel from "./CarModel";
 
 function CanvasLoader() {
   const { progress } = useProgress();
+
   return (
     <Html center>
       <div className="flex flex-col items-center justify-center font-mono text-red-500 bg-black/80 p-6 rounded border-2 border-red-900 backdrop-blur-md">
@@ -24,8 +25,9 @@ function CanvasLoader() {
           /// LOADING_ASSETS
         </div>
         <div className="w-48 md:w-64 h-4 border-2 border-red-900 p-0.5">
+          {/* REMOVED 'transition-all duration-300' so the bar perfectly matches the text value */}
           <div
-            className="h-full bg-red-600 transition-all duration-300"
+            className="h-full bg-red-600"
             style={{ width: `${progress}%` }}
           />
         </div>
