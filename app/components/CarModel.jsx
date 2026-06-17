@@ -1,10 +1,10 @@
 "use client";
 
 import { useGLTF } from "@react-three/drei";
+const modelPath = "/jdm_archive/car.glb";
 
 export default function CarModel() {
-  // useGLTF automatically fetches from the public folder.
-  const { scene } = useGLTF("/car.glb");
+  const { scene } = useGLTF(modelPath);
 
   return (
     // 'primitive' is a special R3F component that renders raw Three.js objects
@@ -13,4 +13,4 @@ export default function CarModel() {
 }
 
 // Preloading ensures the model starts downloading immediately, preventing pop-in
-useGLTF.preload("/car.glb");
+useGLTF.preload(modelPath);
