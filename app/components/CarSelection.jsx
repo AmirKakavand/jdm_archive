@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-// You will replace the empty strings with the paths to your actual images later
+// The raw paths stay exactly the same
 const JDM_CARS = [
   {
     id: "supra",
@@ -37,13 +37,18 @@ export default function CarSelection({ onSelectCar }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const activeCar = JDM_CARS[activeIndex];
 
+  // Dynamically determine the base path based on the environment
+  const isProd = process.env.NODE_ENV === "production";
+  const basePath = isProd ? "/jdm_archive" : "";
+
   return (
     <div className="relative w-full h-full bg-black text-white font-mono overflow-hidden">
       {/* Background Image Layer (Active Car) */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-50 transition-all duration-700"
         style={{
-          backgroundImage: `url(${activeCar.bgImg})`,
+          // INJECTED BASEPATH HERE
+          backgroundImage: `url(${basePath}${activeCar.bgImg})`,
           backgroundColor: "#111",
         }}
       >
@@ -88,7 +93,8 @@ export default function CarSelection({ onSelectCar }) {
                 className={`w-48 h-32 cursor-pointer border-2 transition-all duration-300 relative overflow-hidden flex flex-col justify-end p-2
                   ${index === activeIndex ? "border-red-600 scale-105" : "border-neutral-800 opacity-50 hover:opacity-100"}`}
                 style={{
-                  backgroundImage: `url(${car.thumbImg})`,
+                  // INJECTED BASEPATH HERE
+                  backgroundImage: `url(${basePath}${car.thumbImg})`,
                   backgroundColor: "#222",
                   backgroundSize: "cover",
                 }}
